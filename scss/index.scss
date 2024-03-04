@@ -1,0 +1,330 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "JetBrains Mono", monospace;
+  background: linear-gradient(360deg, #14131b 100%, #08070b 100%);
+  color: #e6e5ea;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden !important;
+}
+svg {
+  cursor: pointer;
+}
+.container {
+  max-width: 500px;
+  width: 100%;
+  padding: 62px 10px;
+  .title-div {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    .title {
+      color: #817d92;
+      font-feature-settings: "clig" off, "liga" off;
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 31px;
+    }
+    .mode {
+      position: absolute;
+      right: 10px;
+      top: 5px;
+      width: 30px;
+      height: 30px;
+    }
+    .dark {
+      display: none;
+    }
+  }
+  .result {
+    background: #24232c;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 19px 32px;
+    max-width: 436px;
+    margin-bottom: 24px;
+    h2 {
+      font-size: 32px;
+      font-weight: 700;
+    }
+  }
+  .settings {
+    background: var(--Dark-Grey, #24232c);
+    padding: 34px 32px;
+    .ch-lgth {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      h2 {
+        font-size: 18px;
+        font-weight: 700;
+      }
+      input {
+        color: #a4ffaf;
+        font-size: 32px;
+        font-weight: 700;
+        background: transparent;
+        border: none;
+        outline: none;
+        width: 49px;
+      }
+    }
+    .progress {
+      background: linear-gradient(
+        to right,
+        #a4ffaf 0%,
+        #a4ffaf 50%,
+        #000 50%,
+        #000 100%
+      );
+      border-radius: 0;
+      height: 8px;
+      width: 100%;
+      outline: none;
+      transition: background 450ms ease-in;
+      appearance: none;
+      cursor: pointer;
+      margin-bottom: 32px;
+    }
+    .progress::-webkit-slider-thumb {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      -webkit-appearance: none;
+      background: #fff;
+    }
+    label {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      margin-bottom: 19px;
+      input[type="checkbox"] {
+        display: none;
+      }
+    }
+    .strength {
+      padding: 24px 32px;
+      display: flex;
+      background: #18171f;
+      justify-content: space-between;
+      margin-bottom: 32px;
+      display: none;
+      h2 {
+        font-size: 18px;
+        color: #817d92;
+        font-weight: 700;
+      }
+      .strength-type {
+        display: flex;
+        gap: 8px;
+        h2 {
+          color: #e6e5ea;
+          font-size: 24px;
+          font-weight: 700;
+          margin-right: 7px;
+        }
+        div {
+          width: 10px;
+          height: 28px;
+          border: 2px solid #e6e5ea;
+        }
+      }
+    }
+    button {
+      width: 100%;
+      padding: 20px 0;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 700;
+      background: #a4ffaf;
+      font-family: "JetBrains Mono", monospace;
+      cursor: pointer;
+      outline: none;
+      border: none;
+      svg {
+        transform: translateX(12px);
+      }
+      &:active {
+        opacity: 0.85;
+        svg {
+          animation: svgAnim 0.25s;
+        }
+      }
+    }
+  }
+}
+
+.err-modal {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: 0.3s ease-in-out;
+  display: none;
+  background-color: rgb(204, 53, 53);
+  h2 {
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .close {
+    width: 20px;
+    height: 20px;
+    background: rgb(224, 52, 52);
+    position: relative;
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      z-index: 100;
+      width: 100%;
+      height: 1.2px;
+      background: #fff;
+      top: 8px;
+      transform: rotate(45deg);
+    }
+    &::after {
+      transform: rotate(-45deg);
+    }
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: #b87777;
+  }
+}
+.err-modal-true {
+  display: flex;
+  &::after {
+    animation: errModal 3s;
+  }
+}
+@keyframes svgAnim {
+  from {
+    transform: translateX(6px);
+  }
+  to {
+    transform: translateX(12px);
+  }
+}
+
+@keyframes errModal {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0;
+  }
+}
+
+.ligth {
+  background: #d7ddda;
+  color: #000;
+  .title-div {
+    .title {
+      color: #000;
+    }
+    .mode {
+      display: none;
+    }
+    .dark {
+      display: block;
+    }
+  }
+  .result {
+    background: #bac5bf;
+  }
+  .settings {
+    background: #bac5bf;
+    .strength {
+      background: #838685;
+      h2 {
+        color: #000;
+      }
+      .strength-type {
+        h2 {
+          color: #000;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 540px) {
+  .container {
+    max-width: 342px;
+    padding: 30px 16px;
+    .title-div {
+      .title {
+        font-size: 16px;
+        margin-bottom: 16px;
+      }
+      .mode {
+        width: 20px;
+        height: 20px;
+      }
+    }
+    .result {
+      max-width: 311px;
+      padding: 16px;
+      margin-bottom: 16px;
+      h2 {
+        font-size: 24px;
+      }
+      svg {
+        width: 16px;
+      }
+    }
+    .settings {
+      padding: 21px 16px;
+      .ch-lgth {
+        h2 {
+          font-size: 16px;
+        }
+        input {
+          font-size: 24px;
+          width: 29px;
+        }
+      }
+      label {
+        gap: 20px;
+        font-size: 16px;
+      }
+      .strength {
+        padding: 16px;
+        align-items: center;
+        margin-bottom: 16px;
+        h2 {
+          font-size: 16px;
+        }
+        .strength-type {
+          align-items: center;
+          h2 {
+            font-size: 18px;
+            margin-right: 0;
+          }
+        }
+      }
+    }
+  }
+  .err-modal {
+    h2 {
+      font-size: 14px;
+    }
+  }
+}

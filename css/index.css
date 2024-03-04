@@ -1,0 +1,390 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "JetBrains Mono", monospace;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(100%, #14131b), to(#08070b));
+  background: linear-gradient(360deg, #14131b 100%, #08070b 100%);
+  color: #e6e5ea;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow-x: hidden !important;
+}
+
+svg {
+  cursor: pointer;
+}
+
+.container {
+  max-width: 500px;
+  width: 100%;
+  padding: 62px 10px;
+}
+.container .title-div {
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+.container .title-div .title {
+  color: #817d92;
+  -webkit-font-feature-settings: "clig" off, "liga" off;
+          font-feature-settings: "clig" off, "liga" off;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 31px;
+}
+.container .title-div .mode {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  width: 30px;
+  height: 30px;
+}
+.container .title-div .dark {
+  display: none;
+}
+.container .result {
+  background: #24232c;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  padding: 19px 32px;
+  max-width: 436px;
+  margin-bottom: 24px;
+}
+.container .result h2 {
+  font-size: 32px;
+  font-weight: 700;
+}
+.container .settings {
+  background: var(--Dark-Grey, #24232c);
+  padding: 34px 32px;
+}
+.container .settings .ch-lgth {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 16px;
+}
+.container .settings .ch-lgth h2 {
+  font-size: 18px;
+  font-weight: 700;
+}
+.container .settings .ch-lgth input {
+  color: #a4ffaf;
+  font-size: 32px;
+  font-weight: 700;
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 49px;
+}
+.container .settings .progress {
+  background: -webkit-gradient(linear, left top, right top, from(#a4ffaf), color-stop(50%, #a4ffaf), color-stop(50%, #000), to(#000));
+  background: linear-gradient(to right, #a4ffaf 0%, #a4ffaf 50%, #000 50%, #000 100%);
+  border-radius: 0;
+  height: 8px;
+  width: 100%;
+  outline: none;
+  -webkit-transition: background 450ms ease-in;
+  transition: background 450ms ease-in;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  cursor: pointer;
+  margin-bottom: 32px;
+}
+.container .settings .progress::-webkit-slider-thumb {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  -webkit-appearance: none;
+  background: #fff;
+}
+.container .settings label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 24px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 19px;
+}
+.container .settings label input[type=checkbox] {
+  display: none;
+}
+.container .settings .strength {
+  padding: 24px 32px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: #18171f;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 32px;
+  display: none;
+}
+.container .settings .strength h2 {
+  font-size: 18px;
+  color: #817d92;
+  font-weight: 700;
+}
+.container .settings .strength .strength-type {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 8px;
+}
+.container .settings .strength .strength-type h2 {
+  color: #e6e5ea;
+  font-size: 24px;
+  font-weight: 700;
+  margin-right: 7px;
+}
+.container .settings .strength .strength-type div {
+  width: 10px;
+  height: 28px;
+  border: 2px solid #e6e5ea;
+}
+.container .settings button {
+  width: 100%;
+  padding: 20px 0;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  background: #a4ffaf;
+  font-family: "JetBrains Mono", monospace;
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
+.container .settings button svg {
+  -webkit-transform: translateX(12px);
+      -ms-transform: translateX(12px);
+          transform: translateX(12px);
+}
+.container .settings button:active {
+  opacity: 0.85;
+}
+.container .settings button:active svg {
+  -webkit-animation: svgAnim 0.25s;
+          animation: svgAnim 0.25s;
+}
+
+.err-modal {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  display: none;
+  background-color: rgb(204, 53, 53);
+}
+.err-modal h2 {
+  font-size: 18px;
+  font-weight: 700;
+}
+.err-modal .close {
+  width: 20px;
+  height: 20px;
+  background: rgb(224, 52, 52);
+  position: relative;
+}
+.err-modal .close::before, .err-modal .close::after {
+  content: "";
+  position: absolute;
+  z-index: 100;
+  width: 100%;
+  height: 1.2px;
+  background: #fff;
+  top: 8px;
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+.err-modal .close::after {
+  -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+.err-modal::after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: #b87777;
+}
+
+.err-modal-true {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.err-modal-true::after {
+  -webkit-animation: errModal 3s;
+          animation: errModal 3s;
+}
+
+@-webkit-keyframes svgAnim {
+  from {
+    -webkit-transform: translateX(6px);
+            transform: translateX(6px);
+  }
+  to {
+    -webkit-transform: translateX(12px);
+            transform: translateX(12px);
+  }
+}
+
+@keyframes svgAnim {
+  from {
+    -webkit-transform: translateX(6px);
+            transform: translateX(6px);
+  }
+  to {
+    -webkit-transform: translateX(12px);
+            transform: translateX(12px);
+  }
+}
+@-webkit-keyframes errModal {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0;
+  }
+}
+@keyframes errModal {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0;
+  }
+}
+.ligth {
+  background: #d7ddda;
+  color: #000;
+}
+.ligth .title-div .title {
+  color: #000;
+}
+.ligth .title-div .mode {
+  display: none;
+}
+.ligth .title-div .dark {
+  display: block;
+}
+.ligth .result {
+  background: #bac5bf;
+}
+.ligth .settings {
+  background: #bac5bf;
+}
+.ligth .settings .strength {
+  background: #838685;
+}
+.ligth .settings .strength h2 {
+  color: #000;
+}
+.ligth .settings .strength .strength-type h2 {
+  color: #000;
+}
+
+@media (max-width: 540px) {
+  .container {
+    max-width: 342px;
+    padding: 30px 16px;
+  }
+  .container .title-div .title {
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+  .container .title-div .mode {
+    width: 20px;
+    height: 20px;
+  }
+  .container .result {
+    max-width: 311px;
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+  .container .result h2 {
+    font-size: 24px;
+  }
+  .container .result svg {
+    width: 16px;
+  }
+  .container .settings {
+    padding: 21px 16px;
+  }
+  .container .settings .ch-lgth h2 {
+    font-size: 16px;
+  }
+  .container .settings .ch-lgth input {
+    font-size: 24px;
+    width: 29px;
+  }
+  .container .settings label {
+    gap: 20px;
+    font-size: 16px;
+  }
+  .container .settings .strength {
+    padding: 16px;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-bottom: 16px;
+  }
+  .container .settings .strength h2 {
+    font-size: 16px;
+  }
+  .container .settings .strength .strength-type {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .container .settings .strength .strength-type h2 {
+    font-size: 18px;
+    margin-right: 0;
+  }
+  .err-modal h2 {
+    font-size: 14px;
+  }
+}
